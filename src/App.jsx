@@ -3,14 +3,29 @@ import React, { useState } from "react"
 
 function App() {
 
-  const [input, setInput] = useState()
+  const [input, setInput] = useState("")
+  const [image, setImage] = useState("")
+
+
+
 const handelClick = () => { 
-  console.log('submit')
+  console.log(image)
  }
 
  const handelImage = (e) => { 
-  console.log(e.target.files)
+
+  let images = e.target.files;
+
+  let reader = new FileReader();
+
+  reader.onload = () =>{
+    setImage(reader.result)
   }
+
+  reader.readAsDataURL(images[0])
+
+  }
+
 
   return (
     <>
